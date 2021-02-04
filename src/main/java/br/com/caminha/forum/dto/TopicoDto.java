@@ -1,8 +1,8 @@
 package br.com.caminha.forum.dto;
 
 import java.time.LocalDateTime;
-import java.util.List;
-import java.util.stream.Collectors;
+
+import org.springframework.data.domain.Page;
 
 import br.com.caminha.forum.modelo.Topico;
 
@@ -33,9 +33,8 @@ public class TopicoDto {
 		return dataCriacao;
 	}
 
-	public static List<TopicoDto> toTopicos(List<Topico> topicos) {
-		
-		return topicos.stream().map(TopicoDto::new).collect(Collectors.toList());
+	public static Page<TopicoDto> toTopicos(Page<Topico> topicos) {
+		return topicos.map(TopicoDto::new);
 	}
 	
 	
